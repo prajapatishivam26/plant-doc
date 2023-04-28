@@ -1,34 +1,30 @@
 const express = require('express');
 const app = express();
-
-// importing routers
+//importing router
 const userRouter = require('./routers/userrouter');
-const carRouter = require('./routers/carrouter');
 const cors = require('cors');
 
 app.use(cors({
-    origin: ['http://localhost:3000']
-}));
-
+    origin: ['http://localhost:3000', 'http://localhost:3001']
+}))
 // parse json data
 app.use(express.json());
-
 // adding routers
 app.use('/user',userRouter);
-app.use('/car',carRouter);
 
 const port = 5000;
 
-app.get('/',(req , res) => {
-    res.send('working refectly');
+app.get('/', (req, res) => {
+    res.send('Working Perfectly')
 });
 
-app.get('/add',(req,res)=>{
-    res.send('response from add');
-});
+app.get('/add',(req, res) => {
+    res.send('Response from Add');
+})
 
-app.get('/getall',(req,res)=>{
-    res.send('hello')
-});
+// getall
+app.get('/getall',(req,res) => {
+    res.send('Hello')
+})
 
-app.listen(port,() => {console.log('server started!!'); } );
+app.listen(port, () => { console.log('server started!!'); } );
