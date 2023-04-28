@@ -1,28 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
+import Main from './components/main';
 import { BrowserRouter,Navigate, Route, Routes } from 'react-router-dom';
 import Home from './components/main/Home';
 import Login from './components/main/Login';
-import Signup from './components/main/Signup';
-import Main from './components/main';
+import User from './components/user';
+import PredictPlantDisease from './components/user/PredictPlantDisease';
 
 function App() {
   return (
-    <div>
-     <BrowserRouter>
-     
-     <Routes>
-     <Route path='/' element={<Navigate to="/home" />} />
-     <Route path='main' element={<Main/>} >
+    <BrowserRouter>
 
-     <Route path='home' element={<Home />} />
-      <Route path='login' element={<Login />} />
-      <Route path='signup' element={<Signup />} />
-     </Route>
+      <Routes>
+        <Route path='/' element={<Navigate to="/home" />} />
+        <Route path='main' element={<Main />} >
+          <Route path='home' element={<Home />} />
+          <Route path='login' element={<Login />} />
 
-     </Routes>
-     </BrowserRouter>
-    </div>
+        </Route>
+        <Route path='user' element={<User />} >
+          <Route path='predict' element={<PredictPlantDisease />} />
+
+        </Route>
+
+      </Routes>
+    </BrowserRouter>
   );
 }
 
