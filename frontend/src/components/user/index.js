@@ -1,15 +1,12 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import Navbar from './Navbar'
 
-const Main = () => {
+const User = () => {
   return (
     <div>
-        <Navbar />
         <Outlet />
-
     </div>
   )
 }
 
-export default Main
+export default User 
