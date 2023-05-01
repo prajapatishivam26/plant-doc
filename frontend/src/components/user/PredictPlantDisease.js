@@ -36,31 +36,30 @@ const PredictPlantDisease = () => {
     // await predict(processedImage);
   }
 
-  async function handleFileSelect(event) {
-    const file = event.target.files[0];
-
-    // Create a new FileReader object
-    const reader = new FileReader();
-
-    // Set up the reader to read the file as a data URL
-    reader.readAsDataURL(file);
-
-    // Wait for the reader to load the file
-    reader.onload = async () => {
-      const imgData = new Image();
-      imgData.src = reader.result;
-
-      // Wait for the image to load
-      imgData.onload = async () => {
-        await handleImageUpload(imgData);
-      };
-    };
+  async function handleImageUpload(event) {
+    const img = new Image();
+    img.src  = '/test_image.png';
+    img.onload = async function() {
+      const image = tf.browser.fromPixels(img);
+      const processedImage = tf.image.resizeBilinear(image, [224, 224]);
+      console.log('predicing ... ');
+      await predict(processedImage);
+    }
+    // const image = tf.browser.fromPixels(event.target);
+    // const processedImage = tf.image.resizeBilinear(image, [224, 224]);
+    // await predict(processedImage);
   }
 
+  useEffect(() => {
+    handleImageUpload();
+  }, [])
   
 
   return (
     <div>
+
+      
+
       <input type="file" onChange={handleImageUpload} />
     </div>
   );
