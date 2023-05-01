@@ -24,13 +24,29 @@ const PredictPlantDisease = () => {
   }
 
   async function handleImageUpload(event) {
-    const image = tf.browser.fromPixels(event.target);
-    const processedImage = tf.image.resizeBilinear(image, [224, 224]);
-    await predict(processedImage);
+    const img = new Image();
+    img.src  = '/test_image.png';
+    img.onload = async function() {
+      const image = tf.browser.fromPixels(img);
+      const processedImage = tf.image.resizeBilinear(image, [224, 224]);
+      console.log('predicing ... ');
+      await predict(processedImage);
+    }
+    // const image = tf.browser.fromPixels(event.target);
+    // const processedImage = tf.image.resizeBilinear(image, [224, 224]);
+    // await predict(processedImage);
   }
+
+  useEffect(() => {
+    handleImageUpload();
+  }, [])
+  
 
   return (
     <div>
+
+      
+
       <input type="file" onChange={handleImageUpload} />
     </div>
   );
