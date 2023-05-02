@@ -25,8 +25,8 @@ const PredictPlantDisease = () => {
 
   async function handleImageUpload(event) {
     const img = new Image();
-    img.src  = '/test_image.png';
-    img.onload = async function() {
+    img.src = '/test_image.png';
+    img.onload = async function () {
       const image = tf.browser.fromPixels(img);
       const processedImage = tf.image.resizeBilinear(image, [224, 224]);
       console.log('predicing ... ');
@@ -40,16 +40,44 @@ const PredictPlantDisease = () => {
   useEffect(() => {
     handleImageUpload();
   }, [])
-  
+
 
   return (
     <div>
+      <header className='bg-dark'>
+        <div className="container py-5 "  >
+          <h1 class="text-center text-white display-4 fw-bold ">What's Wrong With My Plant?</h1>
 
-      
+        </div>
+      </header>
 
-      <input type="file" onChange={handleImageUpload} />
+      <section>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6">
+              <div className="card my-div" >
+                <div className="card-body">
+                    <img src='' />
+                    <h1>Use Webcam</h1>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="card my-div" style={{backgroundImage: `url('https://thumbs.dreamstime.com/b/small-green-plant-pot-home-design-abstract-house-potted-against-white-background-minimal-creative-concept-space-copy-164229780.jpg')`}}>
+                <div className="card-body">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-  );
+
+
+  )
+
 }
+
 
 export default PredictPlantDisease;
