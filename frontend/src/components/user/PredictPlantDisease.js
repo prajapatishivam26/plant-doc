@@ -23,26 +23,34 @@ const PredictPlantDisease = () => {
     console.log(prediction);
   }
 
-  async function handleImageUpload(imgData) {
-    const image = new Image();
-    image.src =
-      "https://eorganic.org/sites/eorganic.info/files/u3/foliar_late_blight.jpg";
-    image.onload = () => {
-      const tensor = tf.browser.fromPixels(image);
-      console.log(tensor.shape);
-    };
+  // async function handleImageUpload(imgData) {
+  //   const image = new Image();
+  //   image.src =
+  //     "https://eorganic.org/sites/eorganic.info/files/u3/foliar_late_blight.jpg";
+  //   image.onload = () => {
+  //     const tensor = tf.browser.fromPixels(image);
+  //     console.log(tensor.shape);
+  //   };
     // const image = tf.browser.fromPixels('');
     // const processedImage = tf.image.resizeBilinear(image, [224, 224]);
     // await predict(processedImage);
-  }
+  // }
 
   async function handleImageUpload(event) {
     const img = new Image();
-    img.src  = '/test_image.png';
+    img.src  = '/test_image.jpeg';
+
     img.onload = async function() {
-      const image = tf.browser.fromPixels(img);
-      const processedImage = tf.image.resizeBilinear(image, [224, 224]);
       console.log('predicing ... ');
+      // console.log(typeof img);
+      const canvas = document.createElement('canvas');
+  canvas.width = img.width;
+  canvas.height = img.height;
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(img, 0, 0);
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const image = tf.browser.fromPixels(imageData);
+      const processedImage = tf.image.resizeBilinear(image, [224, 224]);
       await predict(processedImage);
     }
     // const image = tf.browser.fromPixels(event.target);
@@ -57,9 +65,9 @@ const PredictPlantDisease = () => {
 
   return (
     <div>
-
+      <button className="btn btn-primary" onClick={handleImageUpload}>run</button>
       
-
+      {/* <img src="/test_image.jpeg" alt="" /> */}
       <input type="file" onChange={handleImageUpload} />
     </div>
   );
