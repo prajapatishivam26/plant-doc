@@ -31,14 +31,15 @@ const Home = () => {
                   className="card cascading-right"
                   style={{
                     background: "hsla(0, 0%, 100%, 0.55)",
-                    backdropFilter: "blur(30px)"
+                    backdropFilter: "blur(30px)",
+                    backgroundImage:""
                   }}
                 >
-                  <div className="card-body px-4 pb-5 pt-md-0 px-md-5 shadow-5">
+                  <div className="card-body px-4 pb-5 pt-md-0 px-md-5 shadow-5 ">
                     <h1 className="my-5 display-4 fw-bold ls-tight">
                       {" "}
                       <span>Happiness is turning&nbsp;</span> <br />{" "}
-                      <span className="text-primary">
+                      <span className="text-success">
                         your space into a Garden
                       </span>{" "}
                     </h1>{" "}
@@ -53,7 +54,7 @@ const Home = () => {
                       Get started
                     </a>{" "}
                     <a
-                      className="btn        btn-light btn-lg py-3 px-5 ripple-surface-primary"
+                      className="btn        btn-outline-success btn-lg py-3 px-5 ripple-surface-primary"
                       data-ripple-color="primary"
                       href="#"
                       role="button"
@@ -106,11 +107,10 @@ const Home = () => {
                   }}
                 >
                   <div className="card-body py-5 px-md-5 shadow-5">
-                    <h2 className="fw-bold mb-4">Enjoy the moment</h2>
+                    <h2 className="fw-bold mb-4 ">Welcome to <span className="text-success fw-bold mb-4">PlantDoc</span> </h2> 
                     <p className="text-muted mb-4">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
-                      soluta corporis voluptate ab error quam dolores doloremque,
-                      quae consectetur.
+                    We are excited to offer a cutting-edge solution for identifying and diagnosing plant diseases quickly and accurately. Our web application utilizes state-of-the-art machine learning algorithms to analyze images of plants and identify any signs of disease or distress.
+                    With our easy-to-use interface, you can simply upload an image of your plant and within seconds receive a diagnosis of any potential diseases affecting your plant. Our application has been trained on a vast database of plant diseases and can identify a wide range of issues including fungal infections, bacterial infections, nutrient deficiencies, and more.
                     </p>
                     <div className="row mb-3">
                       <div className="col-lg-4">
@@ -136,28 +136,15 @@ const Home = () => {
                       </div>
                     </div>
                     <p className="text-muted mb-0">
-                      In ac turpis justo. Vivamus auctor quam vitae odio feugiat
-                      pulvinar. Sed semper ligula sed lorem tincidunt dignissim.
-                      Nam sed cursus lectus. Proin non rutrum magna. Proin
-                      gravida, justo et imperdiet tristique, turpis nisi viverra
-                      est, nec posuere ex arcu sit amet erat. Sed a dictum sem.
-                      Duis pretium condimentum nulla, ut aliquet erat auctor sed.
-                      Aenean facilisis neque id ligula maximus scelerisque. Nunc
-                      sed velit rhoncus, interdum dolor at, lacinia lacus. Proin
-                      eleifend viverra posuere. Ut commodo risus lacus, ac
-                      scelerisque quam aliquam dictum. Etiam dignissim pulvinar
-                      eros eget auctor. Quisque congue turpis quis libero
-                      ullamcorper imperdiet. Vivamus a orci maximus, dignissim
-                      ligula a, congue dui. Morbi et lectus sit amet neque luctus
-                      viverra.
+                    Our goal is to provide gardeners, farmers, and plant enthusiasts with a tool to help them identify and address plant health issues early on, preventing further damage and loss of crops. With our web application, you can quickly and accurately diagnose any issues affecting your plants and take action to protect your crops and garden.We are committed to providing our users with a reliable and easy-to-use tool to help them care for their plants. Try our plant disease detection web application today and take the first step towards a healthy and thriving garden!
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="col-lg-6 mb-5 mb-lg-0">
+              <div className="col-lg-5 mb-5 mb-lg-0">
                 {" "}
                 <img
-                  src="https://mdbootstrap.com/img/new/ecommerce/vertical/117.jpg"
+                  src="https://blog.fnp.com/wp-content/uploads/2019/09/Lattice-Vertical-Garden.jpg"
                   className="w-100 rounded-4 shadow-4"
                   alt=""
                   aria-controls="#picker-editor"
@@ -191,8 +178,8 @@ const Home = () => {
               <div className="col-md-4 d-none d-md-flex">
                 {" "}
                 <img
-                  src="https://mdbootstrap.com/img/new/ecommerce/vertical/097.jpg"
-                  alt="Trendy Pants and Shoes"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxYi6hjGo6TdQYCAIV17kxELQQcB9m54diesvG8IzKma4jZxfjDiX67xqrAkdkdjWUVTQ&usqp=CAU"
+                  alt="sorry can't load img"
                   className="w-100 rounded-t-5 rounded-tr-md-0 rounded-bl-md-5"
                   aria-controls="#picker-editor"
                   draggable="false"
@@ -202,13 +189,11 @@ const Home = () => {
                 <div className="card-body py-5 px-md-5">
                   <h2 className="fw-bold mb-4">
                     {" "}
-                    <span className="text-danger me-2">"Spicy life"</span>
-                    <span>project</span>
+                    <span className="text-success me-2">"HOW TO USE "</span>
+                    <span>PlantDoc!</span>
                   </h2>
                   <p className="text-muted mb-4">
-                    Nunc tincidunt vulputate elit. Mauris varius purus malesuada
-                    neque iaculis malesuada. Aenean gravida magna orci, non
-                    efficitur est porta id. Donec magna diam.
+                  To use a plant disease detection web application, users typically upload an image of their plant to the application's website or mobile app. The application then analyzes the image and compares it to its database of known plant diseases. Based on the characteristics of the image, the application will then provide a diagnosis of any potential diseases affecting the plant.
                   </p>{" "}
                   <a
                     className="btn   btn-success btn-rounded btn-lg"
@@ -239,7 +224,7 @@ const Home = () => {
       <section draggable="false" className="container pt-5" data-v-271253ee="">
         <section className="mb-10 text-center">
           <h2 className="fw-bold mb-10">
-            <span>Meet the</span> <u className="text-primary">team</u>
+            <span>Meet the</span> <u className="text-success">Team</u>
           </h2>
           <div className="row gx-lg-5">
             <div className="col-lg-4 mb-10 mb-lg-0">
@@ -259,7 +244,7 @@ const Home = () => {
                   />{" "}
                 </div>
                 <div className="card-body">
-                  <h5 className="fw-bold">Maria Smith</h5>
+                  <h5 className="fw-bold">Harshit Trivedi</h5>
                   <p className="text-muted">Frontend Developer</p>
                   <ul className="list-unstyled mb-0">
                     {" "}
@@ -305,8 +290,8 @@ const Home = () => {
                   />{" "}
                 </div>
                 <div className="card-body">
-                  <h5 className="fw-bold">Darren Randolph</h5>
-                  <p className="text-muted">Marketing expert</p>
+                  <h5 className="fw-bold">Shivam Prajapati</h5>
+                  <p className="text-muted">Backend Developer</p>
                   <ul className="list-unstyled mb-0">
                     {" "}
                     <a href="#!" className="px-1" draggable="false">
@@ -351,7 +336,7 @@ const Home = () => {
                   />{" "}
                 </div>
                 <div className="card-body">
-                  <h5 className="fw-bold">Ayat Black</h5>
+                  <h5 className="fw-bold">Rishabh Patel</h5>
                   <p className="text-muted">Web designer</p>
                   <ul className="list-unstyled mb-0">
                     {" "}
