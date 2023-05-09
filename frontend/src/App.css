@@ -2,3 +2,16 @@
   border-bottom: 2px solid blueviolet;
   font-weight: bold;
 }
+
+.my-div{
+  height: 60vh;
+  background-position: center;
+  background-size: cover;
+  transition-duration: 300ms;
+  transition-property: all;
+}
+
+.my-div:hover{
+  /* transform: scale(1.2); */
+  background-size: 120%;
+}
