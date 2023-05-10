@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 //importing router
 const userRouter = require('./routers/userrouter');
+const imageRouter = require('./routers/imagerouter');
+const predictionRouter = require('./routers/predictionrouter');
+const utilRouter = require('./routers/util');
 const cors = require('cors');
 
 app.use(cors({

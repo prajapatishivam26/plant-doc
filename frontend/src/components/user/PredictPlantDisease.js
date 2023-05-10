@@ -2,11 +2,28 @@
 import React, { useState, useEffect } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import * as tmImage from '@teachablemachine/image';
+import app_config from '../../config';
 
 const URL = '/AImodels';
 
 const PredictPlantDisease = () => {
   const [model, setModel] = useState(null);
+
+  const {apiUrl} = app_config;
+
+  const uploadFile = (e) => {
+    const file = e.target.files[0];
+    const fd = new FormData();
+    fd.append("myfile", file);
+    fetch(apiUrl + "/util/uploadfile", {
+      method: "POST",
+      body: fd,
+    }).then((res) => {
+      if (res.status === 200) {
+        console.log("file uploaded");
+      }
+    });
+  };
 
   useEffect(() => {
     async function loadModel() {
