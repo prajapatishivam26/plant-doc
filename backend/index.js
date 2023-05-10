@@ -14,6 +14,9 @@ app.use(cors({
 app.use(express.json());
 // adding routers
 app.use('/user',userRouter);
+app.use('/image',imageRouter);
+app.use('/prediction',predictionRouter);
+app.use('/util',utilRouter);
 
 const port = 5000;
 
