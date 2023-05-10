@@ -369,6 +369,7 @@ const Home = () => {
         </section>
       </section>
       {/**/}
+    <video src='/images/plant_animated.mp4' autoplay loop muted className='img-fluid' ></video>
     </div>
   </div>
   

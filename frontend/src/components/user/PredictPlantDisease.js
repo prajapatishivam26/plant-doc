@@ -65,7 +65,8 @@ const PredictPlantDisease = () => {
             <div className="col-md-6">
               <div className="card my-div" style={{backgroundImage: `url('https://thumbs.dreamstime.com/b/small-green-plant-pot-home-design-abstract-house-potted-against-white-background-minimal-creative-concept-space-copy-164229780.jpg')`}}>
                 <div className="card-body">
-
+                  <img src="" />
+                  <h4 className='text-center'>Upload Leaf Image</h4>
                 </div>
               </div>
             </div>
