@@ -95,7 +95,7 @@ const Login = () => {
             <div className="col-lg-6 d-flex align-items-center gradient-custom-2">
               <div className="text-white px-3 py-4 p-md-5 mx-md-4">
                 <img
-                  src="/images/plantdoc_text_icon.jpeg"
+                  src="/images/flg_logo5147-removebg-preview.png"
                   className="img-fluid"
                   alt="sample image"
                   />
