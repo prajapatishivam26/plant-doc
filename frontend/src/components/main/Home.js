@@ -70,9 +70,9 @@ const Home = () => {
               <div className="col-lg-6 mb-5 mb-lg-0">
                 {" "}
                 <img
-                  src="https://images.unsplash.com/photo-1520412099551-62b6bafeb5bb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw5NjI0M3wwfDF8c2VhcmNofDZ8fHBsYW50fGVufDB8fHx8MTY4MjYwMzk0NA&ixlib=rb-4.0.3&q=80&w=1080"
+                  src="/images/plant_grows.gif"
                   className="w-100 rounded-4 shadow-4"
-                  alt=""
+                  alt="Sorry can't load image"
                   aria-controls="#picker-editor"
                   draggable="false"
                 />{" "}
@@ -144,7 +144,7 @@ const Home = () => {
               <div className="col-lg-5 mb-5 mb-lg-0">
                 {" "}
                 <img
-                  src="https://blog.fnp.com/wp-content/uploads/2019/09/Lattice-Vertical-Garden.jpg"
+                  src="/images/wall_plants.jpg"
                   className="w-100 rounded-4 shadow-4"
                   alt=""
                   aria-controls="#picker-editor"
@@ -178,7 +178,7 @@ const Home = () => {
               <div className="col-md-4 d-none d-md-flex">
                 {" "}
                 <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxYi6hjGo6TdQYCAIV17kxELQQcB9m54diesvG8IzKma4jZxfjDiX67xqrAkdkdjWUVTQ&usqp=CAU"
+                  src="/images/plant_scan.jpg"
                   alt="sorry can't load img"
                   className="w-100 rounded-t-5 rounded-tr-md-0 rounded-bl-md-5"
                   aria-controls="#picker-editor"
