@@ -42,11 +42,12 @@ const Login = () => {
               <div className="card-body p-md-5 mx-md-4">
                 <div className="text-center">
                   <img
-                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-                    style={{ width: 185 }}
+                    src="/images/flg_logo5147-removebg-preview.png"
+                    style={{ width: 250 }}
                     alt="logo"
+                    shape
                   />
-                  <h4 className="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
+                  <h4 classNpngame="mt-1 mb-5 pb-1">Welcome To PlantDoc</h4>
                 </div>
                 <form>
                   <p>Please login to your account</p>
