@@ -12,7 +12,7 @@ function App() {
     <BrowserRouter>
 
       <Routes>
-        <Route path='/' element={<Navigate to="/home" />} />
+        <Route path='/' element={<Navigate to="/main/home" />} />
         <Route path='main' element={<Main />} >
           <Route path='home' element={<Home />} />
           <Route path='login' element={<Login />} />
