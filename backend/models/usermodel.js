@@ -1,6 +1,6 @@
 const {Schema,model} = require('../connection');
-
-const myschema = new  Schema({
+const mongoose = require("mongoose")
+const myschema = new  mongoose.Schema({
     name: String,
     email : String,
     password : String,
@@ -8,4 +8,4 @@ const myschema = new  Schema({
     createdAt : Date
 });
 
- module.exports = model('users', myschema);
+ module.exports = mongoose.model('users', myschema);
