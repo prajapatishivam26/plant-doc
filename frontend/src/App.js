@@ -9,6 +9,7 @@ import PredictPlantDisease from "./components/user/PredictPlantDisease";
 import Signup from "./components/main/Signup";
 import UserProvider from "./context/UserProvider";
 import AdminProvider from "./context/AdminProvider";
+import Prediction from "./components/user/Prediction";
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
               <Route path="signup" element={<Signup />} />
             </Route>
             <Route path="user" element={<User />}>
-              <Route path="predict" element={<PredictPlantDisease />} />
+              <Route path="predict1" element={<PredictPlantDisease />} />
+              <Route path="predict" element={<Prediction />} />
             </Route>
           </Routes>
         </AdminProvider>
