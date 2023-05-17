@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import app_config from '../../config';
+import Swal from 'sweetalert2';
 
 const Prediction = () => {
 
@@ -8,7 +9,25 @@ const Prediction = () => {
     const [model, setModel] = useState(null);
     const [maxPredictions, setMaxPredictions] = useState(null);
 
+    const [selImage, setSelImage] = useState('');
+
+    const [predictionLoading, setPredictionLoading] = useState(false);
+
+    const [result, setResult] = useState(null);
+
     let webcam, labelContainer;
+
+    const predictionResultExtractor = (prediction) => {
+
+        return prediction.find((pred) => pred.probability === Math.max(...prediction.map((pred) => pred.probability)));
+        let result = [];
+        for (let i = 0; i < maxPredictions; i++) {
+            const classPrediction =
+                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+            result.push(classPrediction);
+        }
+        return result;
+    }
 
     async function init() {
         const modelURL = modelPath + "/model.json";
@@ -57,17 +76,26 @@ const Prediction = () => {
         // predict can take in an image, video or canvas html element
         // let img = new Image();
         // img.src = '/leaf2.jpg';
-        console.log(img);
+        // console.log(img);
         // console.log(webcam.canvas);
         // console.log(webcam.canvas.value);
         // const prediction = await model.predict(webcam.canvas);
+        // console.log(model);
         const prediction = await model.predict(img);
-        for (let i = 0; i < maxPredictions; i++) {
-            const classPrediction =
-                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-                // labelContainer.childNodes[i].innerHTML = classPrediction;
-                console.log(classPrediction);
-            }
+        console.log(prediction);
+        console.log(predictionResultExtractor(prediction));
+        setResult(predictionResultExtractor(prediction));
+        Swal.fire({
+            title: 'Success',
+            icon : 'success',
+            text : 'Prediction Completed'
+        })
+        // for (let i = 0; i < maxPredictions; i++) {
+        //     const classPrediction =
+        //         prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+        //         // labelContainer.childNodes[i].innerHTML = classPrediction;
+        //         console.log(classPrediction);
+        //     }
     }
 
     async function loop() {
@@ -93,6 +121,7 @@ const Prediction = () => {
       reader.onload = function(loadedEvent) {
         // Set the image source to the uploaded image data
         img.src = loadedEvent.target.result;
+        setSelImage(loadedEvent.target.result);
         predictFromImage(img);
       };
 
@@ -102,12 +131,11 @@ const Prediction = () => {
 }
 
   return (
-    <div>
-        <button className='btn btn-primary' onClick={predictFromImage}>Predict</button>
-        <img src="/leaf2.jpg" />
+    <div style={{minHeight: '100vh', backgroundImage: "url('https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v986-bg-02-kqhe3wit.jpg?w=1200&h=1200&dpr=1&fit=clip&crop=default&fm=jpg&q=75&vib=3&con=3&usm=15&cs=srgb&bg=F4F4F3&ixlib=js-2.2.1&s=a18675d7f6be224df8ff585d65d5d8dc')"}}>
         <header className='bg-dark'>
         <div className="container py-5 "  >
-          <h1 class="text-center text-white display-4 fw-bold ">What's Wrong With My Plant?</h1>
+            <p className="display-4 text-center fw-bold text-white">Plant Doc</p>
+          <h1 class="text-center text-white ">What's Wrong With My Plant?</h1>
 
         </div>
       </header>
@@ -115,19 +143,34 @@ const Prediction = () => {
       <section>
         <div className="container">
           <div className="row">
-            <div className="col-md-6">
-              <div className="card my-div" >
+            <div className="col-md-10 mx-auto">
+              <div className="card" 
+            //   style={{height: '70vh', backgroundSize: 'cover', backgroundImage: `url('https://images.unsplash.com/photo-1538438253612-287c9fc9217e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGxhbnQlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&w=1000&q=80')`}}
+              >
                 <div className="card-body">
-                    <img src='' />
-                    <h1>Use Webcam</h1>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div className="card my-div" style={{backgroundImage: `url('https://thumbs.dreamstime.com/b/small-green-plant-pot-home-design-abstract-house-potted-against-white-background-minimal-creative-concept-space-copy-164229780.jpg')`}}>
-                <div className="card-body">
-                  <img src="" />
+                  {/* <img src="" /> */}
                   <h4 className='text-center'>Upload Leaf Image</h4>
+                  <label className='d-block btn btn-primary px-5 py-3' htmlFor="leaf-image">
+                    <i class="fas fa-upload fa-2x"></i>&nbsp;&nbsp;
+                    Upload Leaf Image</label>
+                  <input hidden type='file' onChange={handleImageUpload} id="leaf-image" />
+
+                  {
+                    selImage ? <img style={{height: '400px'}} className='d-block m-auto mt-4' src={selImage} alt="" /> : <p className='text-center h1 mt-5 bg-white py-4'>Select a leaf image to predict disease</p>
+                  }
+
+                  {
+                    result && (
+                        result.className.endsWith('healthy') ? 
+                        <p className='display-4 fw-bold text-success text-center'>Congratulations!! Your plant is Healthy</p> :
+                        (
+                            <>
+                        <p className='h1 fw-bold text-danger text-center'>OOps!! Your plant has been detected with disease : {result.className}</p>
+                            <button className='btn btn-success mt-3 w-100'> Find Cure for Your Disease <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                            </>
+                        )
+                    )
+                  }
                 </div>
               </div>
             </div>

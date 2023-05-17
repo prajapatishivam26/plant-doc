@@ -10,6 +10,7 @@ import Signup from "./components/main/Signup";
 import UserProvider from "./context/UserProvider";
 import AdminProvider from "./context/AdminProvider";
 import Prediction from "./components/user/Prediction";
+import CurePage from "./components/user/CurePage";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="user" element={<User />}>
               <Route path="predict1" element={<PredictPlantDisease />} />
               <Route path="predict" element={<Prediction />} />
+              <Route path="cure" element={<CurePage />} />
             </Route>
           </Routes>
         </AdminProvider>
