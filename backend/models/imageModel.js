@@ -1,9 +1,12 @@
 const {Schema,model, Types} = require('../connection');
-
-const myschema = new  Schema({
+const mongoose = require("mongoose")
+const myschema = new  mongoose.Schema({
     file: String,
-    user: {type : Types.ObjectId, ref: 'users'},
-    createdAt : new Date()
+    user: {type : mongoose.Types.ObjectId, ref: 'users'},
+    createdAt :{
+        type: Date,
+        default:Date.now()
+    }
 });
 
- module.exports = model('car', myschema);
+ module.exports = mongoose.model('images', myschema);

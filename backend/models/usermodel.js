@@ -1,9 +1,11 @@
 const {Schema,model} = require('../connection');
-
-const myschema = new  Schema({
+const mongoose = require("mongoose")
+const myschema = new  mongoose.Schema({
     name: String,
     email : String,
-    password : String
+    password : String,
+    avatar: String,
+    createdAt : Date
 });
 
- module.exports = model('users', myschema);
+ module.exports = mongoose.model('users', myschema);
