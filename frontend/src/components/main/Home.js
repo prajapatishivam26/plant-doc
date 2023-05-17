@@ -370,6 +370,13 @@ const Home = () => {
         </section>
       </section>
       {/**/}
+      <section style={{backgroundColor: '#fffaf0'}}>
+        <div className='container'>
+
+      <video src="/images/plant_animated.mp4" className='d-block m-auto'></video>
+        </div>
+
+      </section>
     <iframe src='/images/plant_animated.mp4' autoplay loop muted className='img-fluid' ></iframe>
     </div>
   </div>
