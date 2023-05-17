@@ -221,7 +221,8 @@ const Home = () => {
     >
       {/**/}
       {/**/}
-      <section draggable="false" className="container pt-5" data-v-271253ee="">
+      <section draggable="false" className="container pt-5 " data-v-271253ee="">
+        
         <section className="mb-10 text-center">
           <h2 className="fw-bold mb-10">
             <span>Meet the</span> <u className="text-success">Team</u>
@@ -369,7 +370,7 @@ const Home = () => {
         </section>
       </section>
       {/**/}
-    <video src='/images/plant_animated.mp4' autoplay loop muted className='img-fluid' ></video>
+    <iframe src='/images/plant_animated.mp4' autoplay loop muted className='img-fluid' ></iframe>
     </div>
   </div>
   
