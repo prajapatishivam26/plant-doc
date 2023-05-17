@@ -8,6 +8,7 @@
 </head>
 <body>
     <div>Teachable Machine Image Model</div>
+    <input type="file" onchange="handleFileUpload()" />
 <button type="button" onclick="init()">Start</button>
 <div id="webcam-container"></div>
 <div id="label-container"></div>
@@ -21,6 +22,31 @@
     const URL = "./";
 
     let model, webcam, labelContainer, maxPredictions;
+
+    function handleFileUpload(){
+        console.log('loading ... ');
+        const fileUpload = document.querySelector('input[type="file"]');
+        fileUpload.addEventListener('change', function(event){
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function(event){
+                const img = new Image();
+                img.onload = function(){
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imageData.data;
+                    const tensor = tf.tensor3d(data, [canvas.height, canvas.width, 4], 'int32');
+                    console.log(tensor);
+                }
+                img.src = event.target.result;
+            }
+            reader.readAsDataURL(file);
+        });
+    }
 
     // Load the image model and setup the webcam
     async function init() {
@@ -58,7 +84,13 @@
     // run the webcam image through the image model
     async function predict() {
         // predict can take in an image, video or canvas html element
-        const prediction = await model.predict(webcam.canvas);
+        let img = new Image();
+        img.src = 'leaf2.jpg';
+        console.log(img);
+        // console.log(webcam.canvas);
+        // console.log(webcam.canvas.value);
+        // const prediction = await model.predict(webcam.canvas);
+        const prediction = await model.predict(img);
         for (let i = 0; i < maxPredictions; i++) {
             const classPrediction =
                 prediction[i].className + ": " + prediction[i].probability.toFixed(2);
