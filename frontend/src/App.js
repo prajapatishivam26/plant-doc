@@ -5,7 +5,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "./components/main/Home";
 import Login from "./components/main/Login";
 import AboutUs from "./components/main/AboutUs";
-import ContactUs from "./components/main/contactUs";
+import ContactUs from "./components/main/ContactUs";
 import User from "./components/user";
 import PredictPlantDisease from "./components/user/PredictPlantDisease";
 import Signup from "./components/main/Signup";
@@ -25,6 +25,8 @@ function App() {
               <Route path="home" element={<Home />} />
               <Route path="login" element={<Login />} />
               <Route path="signup" element={<Signup />} />
+              <Route path="aboutus" element={<AboutUs />} />
+              <Route path="contact" element={<ContactUs />} />
 
             </Route>
             <Route path="user" element={<User />}>
