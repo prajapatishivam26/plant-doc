@@ -5,7 +5,8 @@ const Navbar = () => {
   return (
     <div><>
     {/* Navbar */}
-    <nav className="navbar navbar-expand-lg navbar-light bg-success">
+    <nav className="navbar navbar-expand-lg navbar-dark"  style={{ backgroundColor: '#358f66' }}>
+
       {/* Container wrapper */}
       <div className="container-fluid">
         {/* Toggle button */}
