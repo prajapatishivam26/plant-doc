@@ -49,10 +49,16 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/main/manageuser">
-                Manage User
+              <NavLink className="nav-link" to="/main/aboutus">
+                About Us
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/main/contact">
+                Contact us 
+              </NavLink>
+              </li>
+           
           </ul>
           {/* Left links */}
         </div>

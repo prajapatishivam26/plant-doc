@@ -4,6 +4,8 @@ import Main from "./components/main";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "./components/main/Home";
 import Login from "./components/main/Login";
+import AboutUs from "./components/main/AboutUs";
+import ContactUs from "./components/main/contactUs";
 import User from "./components/user";
 import PredictPlantDisease from "./components/user/PredictPlantDisease";
 import Signup from "./components/main/Signup";
@@ -23,6 +25,7 @@ function App() {
               <Route path="home" element={<Home />} />
               <Route path="login" element={<Login />} />
               <Route path="signup" element={<Signup />} />
+
             </Route>
             <Route path="user" element={<User />}>
               <Route path="predict1" element={<PredictPlantDisease />} />
