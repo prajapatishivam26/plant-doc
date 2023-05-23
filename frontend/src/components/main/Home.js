@@ -45,18 +45,19 @@ const Home = () => {
                     </h1>{" "}
                     <a
                       className="btn        btn-success btn-lg py-3 px-5 mb-2 mb-md-0 me-md-2"
-                      href="#"
+                      href="http://localhost:3000/user/predict"
                       role="button"
                       aria-controls="#picker-editor"
                       draggable="false"
                       style={{}}
-                    >
-                      Get started
+                       
+                    
+                     > Get started
                     </a>{" "}
                     <a
                       className="btn        btn-outline-success btn-lg py-3 px-5 ripple-surface-primary"
                       data-ripple-color="primary"
-                      href="#"
+                      href="http://localhost:3000/main/aboutus"
                       role="button"
                       aria-controls="#picker-editor"
                       draggable="false"
