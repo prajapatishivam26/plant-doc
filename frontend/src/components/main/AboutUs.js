@@ -20,10 +20,10 @@ const AboutUs = () => {
               className="p-5 text-center bg-image"
               style={{
                 backgroundImage:
-                  'url("https://mdbootstrap.com/img/new/textures/full/142.jpg")',
-                height: 500,
+                  `url('/images/mini_garden.gif')`,
+                height: 600,
                 backgroundSize: "cover",
-                backgroundPosition: "50% 50%",
+                backgroundPosition: "center",
                 backgroundColor: "rgba(0, 0, 0, 0)"
               }}
               aria-controls="#picker-editor"
@@ -34,7 +34,7 @@ const AboutUs = () => {
               <div
                 className="card mx-4 mx-md-5 text-center shadow-5-strong"
                 style={{
-                  marginTop: "-170px",
+                  marginTop: "-10px",
                   background: "hsla(0, 0%, 100%, 0.7)",
                   backdropFilter: "blur(30px)"
                 }}
