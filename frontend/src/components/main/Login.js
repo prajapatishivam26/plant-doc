@@ -84,11 +84,14 @@ const Login = () => {
                 </div>
                 <div className="col-lg-6 d-flex align-items-center gradient-custom-2">
                   <div className="text-white px-3 py-4 p-md-5 mx-md-4">
+                    
                     <img
-                      src="/images/flg_logo5147-removebg-preview.png"
+                      src="/images/gardener_constant.gif"
+                      height= "600"
                       className="img-fluid"
                       alt="sample image"
                     />
+                  
                     <h4 className="mb-4">We are more than just a company</h4>
                     <p className="small mb-0">
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
