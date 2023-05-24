@@ -44,11 +44,11 @@ const AboutUs = () => {
                   {" "}
                   <h1 className="display-3 fw-bold ls-tight mb-4">
                     {" "}
-                    <span>The best offer on the market</span> <br />{" "}
-                    <span className="text-primary">for your business</span>{" "}
+                    <span>Keeping Plants Healthy,</span> <br />{" "}
+                    <span className="text-success"> One Prediction at a Time</span>{" "}
                   </h1>{" "}
                   <a
-                    className="btn  btn-primary btn-lg py-3 px-5 mb-2 mb-md-0 me-md-2"
+                    className="btn  btn-success btn-lg py-3 px-5 mb-2 mb-md-0 me-md-2"
                     href="#"
                     role="button"
                     aria-controls="#picker-editor"
@@ -56,14 +56,16 @@ const AboutUs = () => {
                     Get started
                   </a>{" "}
                   <a
-                    className="btn  btn-link btn-lg py-3 px-5 mb-2 mb-md-0"
-                    data-ripple-color="primary"
-                    href="#"
-                    role="button"
-                    aria-controls="#picker-editor"
-                  >
-                    Learn more
-                  </a>{" "}
+                      className="btn  btn-lg py-3 px-5 ripple-surface-primary"
+                      data-ripple-color="primary"
+                      href="/main/aboutus"
+                      role="button"
+                      aria-controls="#picker-editor"
+                      draggable="false"
+                      style={{}}
+                    >
+                      Learn more
+                    </a>{" "}
                 </div>{" "}
               </div>{" "}
             </div>{" "}
@@ -80,13 +82,13 @@ const AboutUs = () => {
             <h2 className="fw-bold mb-5 text-center">
               {" "}
               <span className="me-1">Why is it so</span>
-              <u className="text-primary">great?</u>{" "}
+              <u className="text-success">great?</u>{" "}
             </h2>{" "}
             <div className="row gx-lg-5">
               {" "}
               <div className="col-md-4 mb-5 mb-md-0">
                 {" "}
-                <div className="p-3 bg-primary rounded-4 shadow-2-strong d-inline-block mb-4">
+                <div className="p-3 bg-success rounded-4 shadow-2-strong d-inline-block mb-4">
                   {" "}
                   <i
                     className="fas fa-headset fa-lg text-white fa-fw"

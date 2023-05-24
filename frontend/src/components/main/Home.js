@@ -57,7 +57,7 @@ const Home = () => {
                     <a
                       className="btn        btn-outline-success btn-lg py-3 px-5 ripple-surface-primary"
                       data-ripple-color="primary"
-                      href="http://localhost:3000/main/aboutus"
+                      href="/main/aboutus"
                       role="button"
                       aria-controls="#picker-editor"
                       draggable="false"
