@@ -329,7 +329,7 @@ const Home = () => {
                 >
                   {" "}
                   <img
-                    src="/images/rishabh.jpg"
+                    src="/images/rishabh.png"
                     className="rounded-circle shadow-5-strong"
                     alt=""
                     style={{ width: 150, height: 150 }}
