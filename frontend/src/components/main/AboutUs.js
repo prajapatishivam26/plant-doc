@@ -49,22 +49,22 @@ const AboutUs = () => {
                   </h1>{" "}
                   <a
                     className="btn  btn-success btn-lg py-3 px-5 mb-2 mb-md-0 me-md-2"
-                    href="#"
+                    href="/user/predict"
                     role="button"
                     aria-controls="#picker-editor"
                   >
-                    Get started
+                    Predict disease
                   </a>{" "}
                   <a
                       className="btn  btn-lg py-3 px-5 ripple-surface-primary"
                       data-ripple-color="primary"
-                      href="/main/aboutus"
+                      href="/main/signup"
                       role="button"
                       aria-controls="#picker-editor"
                       draggable="false"
                       style={{}}
                     >
-                      Learn more
+                      signup
                     </a>{" "}
                 </div>{" "}
               </div>{" "}
@@ -95,43 +95,37 @@ const AboutUs = () => {
                     aria-controls="#picker-editor"
                   />{" "}
                 </div>{" "}
-                <h5 className="fw-bold mb-3">Support 24/7</h5>{" "}
+                <h5 className="fw-bold mb-3">Dedicated Support and Community</h5>{" "}
                 <p className="text-muted mb-0">
-                  Laudantium totam quas cumque pariatur at doloremque hic quos
-                  quia eius. Reiciendis optio minus mollitia rerum labore facilis
-                  inventore voluptatem ad, quae quia sint. Ullam.
+                At PlantDoc, we prioritize your success and satisfaction. We offer dedicated support through various channels, including email and a responsive contact form, to address any questions, concerns, or feedback you may have. Additionally, we foster a community of plant enthusiasts, farmers, and experts, where you can connect with like-minded individuals, share experiences, and learn from one another.
                 </p>{" "}
               </div>{" "}
               <div className="col-md-4 mb-5 mb-md-0">
                 {" "}
-                <div className="p-3 bg-primary rounded-4 shadow-2-strong d-inline-block mb-4">
+                <div className="p-3 bg-success rounded-4 shadow-2-strong d-inline-block mb-4">
                   {" "}
                   <i
                     className="fas fa-shield-alt fa-lg text-white fa-fw"
                     aria-controls="#picker-editor"
                   />{" "}
                 </div>{" "}
-                <h5 className="fw-bold mb-3">Safe and solid</h5>{" "}
+                <h5 className="fw-bold mb-3">User-Friendly and Convenient</h5>{" "}
                 <p className="text-muted mb-0">
-                  Eum nostrum fugit numquam, voluptates veniam neque quibusdam
-                  ullam aspernatur odio soluta, quisquam dolore animi mollitia a
-                  omnis praesentium, expedita nobis!
+                We understand the importance of simplicity and accessibility when it comes to technology. Our plant disease detection website has been designed with a user-friendly interface, making it intuitive and easy to navigate for all users, regardless of their technical expertise. You can access our platform anytime, anywhere, using any device with an internet connection. With quick and convenient results, you can promptly address any issues and keep your plants healthy with ease.
                 </p>{" "}
               </div>{" "}
               <div className="col-md-4 mb-5 mb-md-0">
                 {" "}
-                <div className="p-3 bg-primary rounded-4 shadow-2-strong d-inline-block mb-4">
+                <div className="p-3 bg-success rounded-4 shadow-2-strong d-inline-block mb-4">
                   {" "}
                   <i
                     className="fas fa-shipping-fast fa-lg text-white fa-fw"
                     aria-controls="#picker-editor"
                   />{" "}
                 </div>{" "}
-                <h5 className="fw-bold mb-3">Extremely fast</h5>{" "}
+                <h5 className="fw-bold mb-3">Accurate and Timely Predictions</h5>{" "}
                 <p className="text-muted mb-0">
-                  Enim cupiditate, minus nulla dolor cumque iure eveniet facere
-                  ullam beatae hic voluptatibus dolores exercitationem? Facilis
-                  debitis aspernatur amet nisi?
+                At PlantDoc, we pride ourselves on the accuracy and timeliness of our disease predictions. Our advanced machine learning algorithms have been trained on vast databases of plant disease images and metadata, allowing us to provide reliable predictions for a wide range of diseases. By detecting diseases early, we enable proactive intervention and help prevent crop losses, ultimately ensuring healthier plants and improved yields.
                 </p>{" "}
               </div>{" "}
             </div>{" "}

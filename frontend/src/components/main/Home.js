@@ -237,7 +237,7 @@ const Home = () => {
                 >
                   {" "}
                   <img
-                    src="https://mdbootstrap.com/img/new/avatars/6.jpg"
+                    src="/images/harshit5.jpg"
                     className="rounded-circle shadow-5-strong"
                     alt=""
                     style={{ width: 150, height: 150 }}
