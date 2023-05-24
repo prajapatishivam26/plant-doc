@@ -13,6 +13,7 @@ import UserProvider from "./context/UserProvider";
 import AdminProvider from "./context/AdminProvider";
 import Prediction from "./components/user/Prediction";
 import CurePage from "./components/user/CurePage";
+import logout from "./components/user/logout";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
               <Route path="predict1" element={<PredictPlantDisease />} />
               <Route path="predict" element={<Prediction />} />
               <Route path="cure" element={<CurePage />} />
+              <Route path="logout" element={<Navigate to="/main/home" />} />
             </Route>
           </Routes>
         </AdminProvider>
