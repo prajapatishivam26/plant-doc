@@ -283,9 +283,9 @@ const Home = () => {
                 >
                   {" "}
                   <img
-                    src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                    src="\images\shivam.jpg"
                     className="rounded-circle shadow-5-strong"
-                    alt=""
+                    alt="  "
                     style={{ width: 150, height: 150 }}
                     aria-controls="#picker-editor"
                     draggable="false"
@@ -329,7 +329,7 @@ const Home = () => {
                 >
                   {" "}
                   <img
-                    src="https://mdbootstrap.com/img/new/avatars/15.jpg"
+                    src="/images/rishabh.jpg"
                     className="rounded-circle shadow-5-strong"
                     alt=""
                     style={{ width: 150, height: 150 }}
