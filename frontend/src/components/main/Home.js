@@ -45,7 +45,7 @@ const Home = () => {
                     </h1>{" "}
                     <a
                       className="btn        btn-success btn-lg py-3 px-5 mb-2 mb-md-0 me-md-2"
-                      href="http://localhost:3000/user/predict"
+                      href="/user/predict"
                       role="button"
                       aria-controls="#picker-editor"
                       draggable="false"
