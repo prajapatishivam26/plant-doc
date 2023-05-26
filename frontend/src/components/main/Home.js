@@ -198,7 +198,7 @@ const Home = () => {
                   </p>{" "}
                   <a
                     className="btn   btn-success btn-rounded btn-lg"
-                    href="#"
+                    href="/main/aboutus"
                     role="button"
                     aria-controls="#picker-editor"
                     draggable="false"
