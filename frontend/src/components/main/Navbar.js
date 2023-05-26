@@ -110,7 +110,7 @@ const Navbar = () => {
           <div className="dropdown">
             <a
               className="dropdown-toggle d-flex align-items-center hidden-arrow"
-              href="#"
+              href="/user/userprofile"
               id="navbarDropdownMenuAvatar"
               role="button"
               data-mdb-toggle="dropdown"
@@ -129,7 +129,7 @@ const Navbar = () => {
               aria-labelledby="navbarDropdownMenuAvatar"
             >
               <li>
-                <a className="dropdown-item" href="#">
+                <a className="dropdown-item" href="/user/UserProfile">
                   My profile
                 </a>
               </li>
