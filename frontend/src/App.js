@@ -41,7 +41,7 @@ function App() {
               <Route path="predict1" element={<PredictPlantDisease />} />
               <Route path="predict" element={<Prediction />} />
               <Route path="cure" element={<CurePage />} />
-              <Route path="logout" element={< logout/>} />
+              <Route path="logout" element={< Logout/>} />
             </Route>
           </Routes>
         </AdminProvider>
