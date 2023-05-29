@@ -1,3 +1,9 @@
-import { useHref } from "react-router-dom";
+import React from 'react'
 
-useHref
+const Managecure = () => {
+  return (
+    <div>Managecure</div>
+  )
+}
+
+export default Managecure

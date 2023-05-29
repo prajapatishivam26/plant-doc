@@ -50,13 +50,8 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/main/aboutus">
-                  About Us
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/main/contactus">
-                  Contact us
+                <NavLink className="nav-link" to="/user/predict">
+                  Predict Disease
                 </NavLink>
               </li>
 
@@ -129,7 +124,7 @@ const Navbar = () => {
                 aria-labelledby="navbarDropdownMenuAvatar"
               >
                 <li>
-                  <a className="dropdown-item" href="/user/UserProfile">
+                  <a className="dropdown-item" href="/user/profile">
                     My profile
                   </a>
                 </li>
