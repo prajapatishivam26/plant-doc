@@ -40,6 +40,7 @@ function App() {
               {/* <Route path="predict1" element={<PredictPlantDisease />} /> */}
               <Route path="predict" element={<Prediction />} />
               <Route path="cure" element={<CurePage />} />
+              <Route path="profile" element={<UserProfile />} />
             </Route>
           </Routes>
         </AdminProvider>
