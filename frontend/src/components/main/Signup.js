@@ -60,7 +60,7 @@ const Signup = () => {
   });
 
   return (
-    <section className="vh-100" style={{ backgroundColor: "#eee" }}>
+    <section className="full-page" style={{minHeight: '100vh', backgroundImage: `url('https://img.freepik.com/free-photo/top-view-ferns-leaves-with-copy-space_23-2148678607.jpg?w=2000')` }}>
       <div className="container h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-lg-12 col-xl-11">

@@ -41,7 +41,7 @@ const Login = () => {
 
         const data = await res.json();
         console.log(data);
-        sessionStorage.setItem('user', JSON.stringify(data.user));
+        sessionStorage.setItem('user', JSON.stringify(data));
         navigate('/user/predict');
         Swal.fire({
           icon: "success",

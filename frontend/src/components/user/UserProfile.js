@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import app_config from '../../config';
 
@@ -7,8 +7,22 @@ const UserProfile = () => {
   const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('user')));
 
   const url = app_config.apiUrl;
-  const { themeColorLight } = app_config;
+  const { themeColorLight, apiUrl } = app_config;
   const [passwordHidden, setPasswordHidden] = useState(true);
+ 
+  const [imageList, setImageList] = useState([]);
+
+  const getUserImages = async () => {
+    const res = await fetch(url + '/image/getbyuser/' + currentUser._id);
+    const images = await res.json();
+    console.log(images);
+    setImageList(images);
+  }
+
+  useEffect(() => {
+    getUserImages();
+  }, [])
+  
 
   const updateProfile = async (data) => {
     console.log(data);
@@ -129,20 +143,15 @@ const UserProfile = () => {
                     </p>
                   </div>
                   <div className="row g-2">
-                    <div className="col mb-2">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp" alt="image 1" className="w-100 rounded-3" />
-                    </div>
-                    <div className="col mb-2">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp" alt="image 1" className="w-100 rounded-3" />
-                    </div>
-                  </div>
-                  <div className="row g-2">
-                    <div className="col">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp" alt="image 1" className="w-100 rounded-3" />
-                    </div>
-                    <div className="col">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp" alt="image 1" className="w-100 rounded-3" />
-                    </div>
+                    {
+                      imageList.map((image, index) => (
+                        <div className="col-4 mb-2">
+                          <img src={apiUrl+'/'+image.file} alt="image 1" className="w-100 rounded-3" />
+                        </div>
+                      ))
+                    }
+                    
+                      
                   </div>
                 </div>
               </div>

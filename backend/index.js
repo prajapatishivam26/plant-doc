@@ -20,6 +20,8 @@ app.use('/prediction',predictionRouter);
 app.use('/util',utilRouter);
 app.use('/cure',curerouter);
 
+app.use(express.static('./static/uploads'));
+
 const port = 5000;
 
 app.get('/', (req, res) => {
