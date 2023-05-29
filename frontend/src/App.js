@@ -5,7 +5,6 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "./components/main/Home";
 import Login from "./components/main/Login";
 import AboutUs from "./components/main/AboutUs";
-import ContactUs from "./components/main/ContactUs";
 import User from "./components/user";
 import PredictPlantDisease from "./components/user/PredictPlantDisease";
 import Signup from "./components/main/Signup";
@@ -18,6 +17,7 @@ import Forgetpassword from "./components/main/Forgetpassword";
 import UserProfile from "./components/user/UserProfile";
 
 import TermsCondition from "./components/main/Termscondition.js";
+import Contact from "./components/main/Contact";
 
 function App() {
   return (
@@ -31,13 +31,13 @@ function App() {
               <Route path="login" element={<Login />} />
               <Route path="signup" element={<Signup />} />
               <Route path="aboutus" element={<AboutUs />} />
-              <Route path="contactus" element={<ContactUs />} />
+              <Route path="contactus" element={<Contact />} />
               <Route path="forgetpassword" element={<Forgetpassword />} />
               <Route path="termscondition" element={<TermsCondition />} />
 
             </Route>
             <Route path="user" element={<User />}>
-              <Route path="predict1" element={<PredictPlantDisease />} />
+              {/* <Route path="predict1" element={<PredictPlantDisease />} /> */}
               <Route path="predict" element={<Prediction />} />
               <Route path="cure" element={<CurePage />} />
             </Route>

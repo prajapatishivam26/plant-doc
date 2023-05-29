@@ -83,8 +83,9 @@ const Prediction = () => {
         // console.log(model);
         const prediction = await model.predict(img);
         console.log(prediction);
-        console.log(predictionResultExtractor(prediction));
-        setResult(predictionResultExtractor(prediction));
+        const result = predictionResultExtractor(prediction);
+        console.log(result);
+        setResult(result);
         Swal.fire({
             title: 'Success',
             icon : 'success',
