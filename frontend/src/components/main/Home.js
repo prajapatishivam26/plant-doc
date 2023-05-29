@@ -45,18 +45,19 @@ const Home = () => {
                     </h1>{" "}
                     <a
                       className="btn        btn-success btn-lg py-3 px-5 mb-2 mb-md-0 me-md-2"
-                      href="#"
+                      href="/user/predict"
                       role="button"
                       aria-controls="#picker-editor"
                       draggable="false"
                       style={{}}
-                    >
-                      Get started
+                       
+                    
+                     > Get started
                     </a>{" "}
                     <a
                       className="btn        btn-outline-success btn-lg py-3 px-5 ripple-surface-primary"
                       data-ripple-color="primary"
-                      href="#"
+                      href="/main/aboutus"
                       role="button"
                       aria-controls="#picker-editor"
                       draggable="false"
@@ -197,7 +198,7 @@ const Home = () => {
                   </p>{" "}
                   <a
                     className="btn   btn-success btn-rounded btn-lg"
-                    href="#"
+                    href="/main/aboutus"
                     role="button"
                     aria-controls="#picker-editor"
                     draggable="false"
@@ -236,7 +237,7 @@ const Home = () => {
                 >
                   {" "}
                   <img
-                    src="https://mdbootstrap.com/img/new/avatars/6.jpg"
+                    src="/images/harshit5.jpg"
                     className="rounded-circle shadow-5-strong"
                     alt=""
                     style={{ width: 150, height: 150 }}
@@ -282,9 +283,9 @@ const Home = () => {
                 >
                   {" "}
                   <img
-                    src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                    src="\images\shivam.jpg"
                     className="rounded-circle shadow-5-strong"
-                    alt=""
+                    alt="  "
                     style={{ width: 150, height: 150 }}
                     aria-controls="#picker-editor"
                     draggable="false"
@@ -328,7 +329,7 @@ const Home = () => {
                 >
                   {" "}
                   <img
-                    src="https://mdbootstrap.com/img/new/avatars/15.jpg"
+                    src="/images/rishabh.png"
                     className="rounded-circle shadow-5-strong"
                     alt=""
                     style={{ width: 150, height: 150 }}
@@ -370,6 +371,13 @@ const Home = () => {
         </section>
       </section>
       {/**/}
+      <section style={{backgroundColor: '#fffaf0'}}>
+        <div className='container'>
+
+      <video src="/images/plant_animated.mp4" className='d-block m-auto'></video>
+        </div>
+
+      </section>
     <iframe src='/images/plant_animated.mp4' autoplay loop muted className='img-fluid' ></iframe>
     </div>
   </div>

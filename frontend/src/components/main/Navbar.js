@@ -5,7 +5,8 @@ const Navbar = () => {
   return (
     <div><>
     {/* Navbar */}
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-dark"  style={{ backgroundColor: '#358f66' }}>
+
       {/* Container wrapper */}
       <div className="container-fluid">
         {/* Toggle button */}
@@ -49,10 +50,16 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/main/manageuser">
-                Manage User
+              <NavLink className="nav-link" to="/main/aboutus">
+                About Us
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/main/contactus">
+                Contact us 
+              </NavLink>
+              </li>
+           
           </ul>
           {/* Left links */}
         </div>
@@ -103,7 +110,7 @@ const Navbar = () => {
           <div className="dropdown">
             <a
               className="dropdown-toggle d-flex align-items-center hidden-arrow"
-              href="#"
+              href="/user/userprofile"
               id="navbarDropdownMenuAvatar"
               role="button"
               data-mdb-toggle="dropdown"
@@ -122,7 +129,7 @@ const Navbar = () => {
               aria-labelledby="navbarDropdownMenuAvatar"
             >
               <li>
-                <a className="dropdown-item" href="#">
+                <a className="dropdown-item" href="/user/UserProfile">
                   My profile
                 </a>
               </li>
