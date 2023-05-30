@@ -55,7 +55,7 @@ const Login = () => {
   });
 
   return (
-    <section className="h-100 gradient-form" style={{ backgroundColor: "#eee" }}>
+    <section className="full-page" style={{minHeight: '100vh', backgroundImage: `url('https://img.freepik.com/free-photo/top-view-ferns-leaves-with-copy-space_23-2148678607.jpg?w=2000')` }}>
       <div className="container py-5 h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-xl-10">
