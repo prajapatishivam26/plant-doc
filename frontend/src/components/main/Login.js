@@ -41,8 +41,13 @@ const Login = () => {
 
         const data = await res.json();
         console.log(data);
-        sessionStorage.setItem('user', JSON.stringify(data));
-        navigate('/user/predict');
+        if(data.role === 'admin'){
+          sessionStorage.setItem('admin', JSON.stringify(data));
+          navigate('/admin/managecure');
+        }else{
+          sessionStorage.setItem('user', JSON.stringify(data));
+          navigate('/user/predict');
+        }
         Swal.fire({
           icon: "success",
           title: "success",

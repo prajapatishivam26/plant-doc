@@ -8,6 +8,10 @@ const utilRouter = require('./routers/util');
 const curerouter = require('./routers/curerouter');
 const cors = require('cors');
 
+const stripe = require("stripe")(
+    "sk_test_51NAWp1SCPacst9JciaoWD36Y0WYPGGJIdw6FJ66TIMjb34TdqmWEx2yqRL5dEJQ3y4CDlGloD8tWuwil1JKlc66L00hobIvQ3h"
+  );
+
 app.use(cors({
     origin: ['http://localhost:3000', 'http://localhost:3001']
 }))
@@ -23,6 +27,23 @@ app.use('/cure',curerouter);
 app.use(express.static('./static/uploads'));
 
 const port = 5000;
+
+app.post("/create-payment-intent", async (req, res) => {
+    const { amount } = req.body;
+  
+    // Create a PaymentIntent with the order amount and currency
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: amount * 100,
+      currency: "inr",
+      automatic_payment_methods: {
+        enabled: true,
+      },
+    });
+  
+    res.send({
+      clientSecret: paymentIntent.client_secret,
+    });
+  });
 
 app.get('/', (req, res) => {
     res.send('Working Perfectly')
