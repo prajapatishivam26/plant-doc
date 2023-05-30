@@ -4,8 +4,12 @@ import React from "react";
 import Swal from "sweetalert2";
 import { MDBInput } from 'mdb-react-ui-kit';
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+
+  const navigate  = useNavigate();
+
   const loginSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Required"),
     password: Yup.string()
@@ -29,11 +33,16 @@ const Login = () => {
         method: 'POST',
         body: JSON.stringify(values),
         headers: {
-          'contet-Type': 'application/json'
+          'Content-Type': 'application/json'
         }
       });
 
       if (res.status === 200) {
+
+        const data = await res.json();
+        console.log(data);
+        sessionStorage.setItem('user', JSON.stringify(data));
+        navigate('/user/predict');
         Swal.fire({
           icon: "success",
           title: "success",
