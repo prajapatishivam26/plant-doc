@@ -16,6 +16,7 @@ import CurePage from "./components/user/CurePage";
 import Forgetpassword from "./components/main/Forgetpassword";
 import UserProfile from "./components/user/UserProfile";
 
+import TermsCondition from "./components/main/Termscondition.js";
 
 function App() {
   return (
@@ -30,12 +31,15 @@ function App() {
               <Route path="signup" element={<Signup />} />
               <Route path="aboutus" element={<AboutUs />} />
               <Route path="contactus" element={<ContactUs />} />
+              <Route path="forgetpassword" element={<Forgetpassword />} />
+              <Route path="termscondition" element={<TermsCondition />} />
 
             </Route>
             <Route path="user" element={<User />}>
               <Route path="predict1" element={<PredictPlantDisease />} />
               <Route path="predict" element={<Prediction />} />
               <Route path="cure" element={<CurePage />} />
+              <Route path="logout" element={< Logout/>} />
               <Route path="userprofile" element={< UserProfile/>} />
             </Route>
           </Routes>

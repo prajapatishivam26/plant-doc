@@ -3,8 +3,20 @@ import { useFormik } from "formik";
 import React from "react";
 import Swal from "sweetalert2";
 import { MDBInput } from 'mdb-react-ui-kit';
+import * as Yup from "yup";
 
 const Login = () => {
+  const loginSchema = Yup.object().shape({
+    email: Yup.string().email("Invalid email").required("Required"),
+    password: Yup.string()
+      .required("Please Enter your password")
+    // .matches(
+    //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+    //   "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+    // ),
+
+  });
+
   const loginForm = useFormik({
     initialValues: {
       email: "",
@@ -30,6 +42,7 @@ const Login = () => {
       }
 
     },
+    validationSchema: loginSchema,
   });
 
   return (
@@ -54,6 +67,9 @@ const Login = () => {
                       <p>Please login to your account</p>
                       <MDBInput label='Email' className="mb-4" id='email' onChange={loginForm.handleChange} value={loginForm.values.email} type='text' />
                       <MDBInput label='Password' type="password" className="mb-4" id='password' onChange={loginForm.handleChange} value={loginForm.values.password} />
+                      <span className="text-danger">
+                        {loginForm.errors.password}
+                      </span>
 
                       <div className="text-center pt-1 mb-5 pb-1">
                         <button
@@ -61,8 +77,9 @@ const Login = () => {
                           type="submit"
                         >
                           Log in
+
                         </button>
-                        <a className="text-muted" href="#!">
+                        <a className="text-muted" href="/main/forgetpassword">
                           Forgot password?
                         </a>
                       </div>
@@ -70,13 +87,13 @@ const Login = () => {
                         <hr className="bg-dark w-25 me-3" />
                         <p className="mb-0 me-2">Don't have an account?</p>
                         <a className="text-muted me-3"
-                        role="button"
-                        href="/main/signup">
-                      <button type="button" className="btn btn-outline-danger">
-                        Create new
-                      </button>
+                          role="button"
+                          href="/main/signup">
+                          <button type="button" className="btn btn-outline-danger">
+                            Create new
+                          </button>
                         </a>
-                        
+
 
                       </div>
                     </form>
@@ -84,14 +101,14 @@ const Login = () => {
                 </div>
                 <div className="col-lg-6 d-flex align-items-center gradient-custom-2">
                   <div className="text-white px-3 py-4 p-md-5 mx-md-4">
-                    
+
                     <img
                       src="/images/gardener_constant.gif"
-                      height= "600"
+                      height="600"
                       className="img-fluid"
                       alt="sample image"
                     />
-                  
+
                     <h4 className="mb-4">We are more than just a company</h4>
                     <p className="small mb-0">
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
