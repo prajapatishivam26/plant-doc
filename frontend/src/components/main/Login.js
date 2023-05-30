@@ -48,6 +48,12 @@ const Login = () => {
           title: "success",
           text: "welcome to plantdoc"
         })
+      }else{
+        Swal.fire({
+          icon: "error",
+          title: "error",
+          text: "invalid email or password"
+        })
       }
 
     },

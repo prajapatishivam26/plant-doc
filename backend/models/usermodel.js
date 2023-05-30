@@ -5,7 +5,8 @@ const myschema = new  mongoose.Schema({
     email : String,
     password : String,
     avatar: String,
+    role : { type: String, default: 'user' },
     createdAt : Date
 });
 
- module.exports = mongoose.model('users', myschema);
+module.exports = mongoose.model('users', myschema);

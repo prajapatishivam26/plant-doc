@@ -19,11 +19,16 @@ import UserProfile from "./components/user/UserProfile";
 import TermsCondition from "./components/main/Termscondition.js";
 import Contact from "./components/main/Contact";
 
+import { Toaster } from "react-hot-toast";
+
 function App() {
   return (
     <BrowserRouter>
       <UserProvider>
         <AdminProvider>
+
+          <Toaster position="top-right" />
+
           <Routes>
             <Route path="/" element={<Navigate to="/main/home" />} />
             <Route path="main" element={<Main />}>
