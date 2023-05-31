@@ -1,50 +1,33 @@
-import React, { useEffect, useState } from "react";
-import { Elements } from "@stripe/react-stripe-js";
-import CheckoutPage from "./CheckoutPage";
-import { loadStripe } from "@stripe/stripe-js";
-import useProductContext from "../../context/ProductContext";
-import {
-  MDBCard,
-  MDBCardBody,
-  MDBCardImage,
-  MDBCol,
-  MDBContainer,
-  MDBRow,
-} from "mdb-react-ui-kit";
-import { Link } from "react-router-dom";
-import app_config from "../../config";
+import React, { useEffect, useState } from 'react';
+import { Elements } from '@stripe/react-stripe-js';
+import CheckoutPage from './CheckoutPage';
+import { loadStripe } from '@stripe/stripe-js';
+import useProductContext from '../../context/ProductContext';
+import { MDBCard, MDBCardBody, MDBCardImage, MDBCol, MDBContainer, MDBRow } from 'mdb-react-ui-kit';
+import { Link } from 'react-router-dom';
+import app_config from '../../config';
 
-const stripePromise = loadStripe(
-  "pk_test_51NAWp1SCPacst9Jc5mNIG1n7wWazStI6fyZsE4vsLHFnMncWtmoIZHR9yjiwVwn25ARWEpbLhfPXFqooirlk50qC00HtMHHCle"
-);
+const stripePromise = loadStripe('pk_test_51NAWp1SCPacst9Jc5mNIG1n7wWazStI6fyZsE4vsLHFnMncWtmoIZHR9yjiwVwn25ARWEpbLhfPXFqooirlk50qC00HtMHHCle');
 
 const ShoppingCart = () => {
-  const [clientSecret, setClientSecret] = useState("");
+  const [clientSecret, setClientSecret] = useState('');
   const appearance = {
-    theme: "stripe",
+    theme: 'stripe'
   };
   const options = {
     clientSecret,
-    appearance,
+    appearance
   };
 
   const { apiUrl } = app_config;
-  const {
-    cartItems,
-    addItemToCart,
-    removeItemFromCart,
-    clearCart,
-    isInCart,
-    getCartTotal,
-    getCartItemsCount,
-  } = useProductContext();
+  const { cartItems, addItemToCart, removeItemFromCart, clearCart, isInCart, getCartTotal, getCartItemsCount } = useProductContext();
   useEffect(() => {
     if (getCartTotal() > 0) {
       // Create PaymentIntent as soon as the page loads
-      fetch("http://localhost:5000/create-payment-intent", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount: getCartTotal() }),
+      fetch('http://localhost:5000/create-payment-intent', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount: getCartTotal() })
       })
         .then((res) => res.json())
         .then((data) => setClientSecret(data.clientSecret));
@@ -55,22 +38,13 @@ const ShoppingCart = () => {
     if (getCartItemsCount() === 0)
       return (
         <div className="text-center">
-          <MDBCardImage
-            src={"/cart.png"}
-            alt="login form"
-            className="rounded-start mt-4 w-25 text-center"
-          />
+          <MDBCardImage src={'/cart.png'} alt="login form" className="rounded-start mt-4 w-25 text-center" />
           <h3>Your Cart is Currently Empty!</h3>
           <p className="text-muted">
-            Before proceed to checkout you must add some products to your
-            shopping cart. <br />
+            Before proceed to checkout you must add some products to your shopping cart. <br />
             You will fill a lot of interesting products on our "Product" page.
           </p>
-          <Link
-            className="btn rounded-pill"
-            style={{ backgroundColor: "#4BCCF2", color: "#fff" }}
-            to={"/main/ListEquipment"}
-          >
+          <Link className="btn rounded-pill" style={{ backgroundColor: '#4BCCF2', color: '#fff' }} to={'/main/ListEquipment'}>
             Return To Shop
           </Link>
         </div>
@@ -81,7 +55,7 @@ const ShoppingCart = () => {
           <div
             className="cart-item-placeholder"
             style={{
-              backgroundImage: `url('${apiUrl}/${item.image}')`,
+              backgroundImage: `url('${apiUrl}/${item.image}')`
             }}
           ></div>
         </div>
@@ -92,18 +66,12 @@ const ShoppingCart = () => {
         </div>
         <div className="col-3">
           <div className="input-group">
-            <button
-              className="btn btn-primary px-3 py-2"
-              onClick={(e) => addItemToCart(item)}
-            >
-              {" "}
-              <i class="fa fa-plus-circle" aria-hidden="true"></i>{" "}
+            <button className="btn btn-primary px-3 py-2" onClick={(e) => addItemToCart(item)}>
+              {' '}
+              <i class="fa fa-plus-circle" aria-hidden="true"></i>{' '}
             </button>
             <input type="text" className="form-control" value={item.quantity} />
-            <button
-              className="btn btn-primary px-3 py-2"
-              onClick={(e) => removeItemFromCart(item)}
-            >
+            <button className="btn btn-primary px-3 py-2" onClick={(e) => removeItemFromCart(item)}>
               <i class="fa fa-minus-circle" aria-hidden="true"></i>
             </button>
           </div>
@@ -143,17 +111,14 @@ const ShoppingCart = () => {
             <MDBCol md="3">
               <MDBCardBody className="">
                 {/* <div className="col-md-4"> */}
-                <div className="card " style={{ height: "50vh" }}>
+                <div className="card " style={{ height: '50vh' }}>
                   <div className="card-body">
                     <h3>Order Summary</h3>
                     <hr />
 
                     <p>Total: {getCartTotal()}</p>
                     <p>Items: {getCartItemsCount()}</p>
-                    <button
-                      className="btn btn-danger"
-                      onClick={() => clearCart()}
-                    >
+                    <button className="btn btn-danger" onClick={() => clearCart()}>
                       Clear Cart
                     </button>
                     <Link to="/User/CheckOutPage" className="btn btn-danger">

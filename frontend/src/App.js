@@ -23,6 +23,7 @@ import { Toaster } from 'react-hot-toast';
 import Admin from './components/main';
 import Managecure from './components/admin/Managecure';
 import AdminAuth from './auth/AdminAuth';
+import OrderProduct from './components/user/OrderProduct';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
               {/* <Route path="predict1" element={<PredictPlantDisease />} /> */}
               <Route path="predict" element={<Prediction />} />
               <Route path="cure" element={<CurePage />} />
+              <Route path="order" element={<OrderProduct />} />
               <Route path="profile" element={<UserProfile />} />
             </Route>
             <Route
