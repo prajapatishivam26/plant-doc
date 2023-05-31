@@ -9,7 +9,7 @@ const curerouter = require('./routers/curerouter');
 const cors = require('cors');
 
 const stripe = require("stripe")(
-    "sk_test_51NAWp1SCPacst9JciaoWD36Y0WYPGGJIdw6FJ66TIMjb34TdqmWEx2yqRL5dEJQ3y4CDlGloD8tWuwil1JKlc66L00hobIvQ3h"
+    "sk_test_51ND6JrSBZfgpftdtEIyz1Iba6XVZi1bK4ozDwOnLD7VAHAFYYYXQ29JdvzOvF72CmHpgFGSec78wIl7zBBdl7xfq00jXX8sVnC"
   );
 
 app.use(cors({
