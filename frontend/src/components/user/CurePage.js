@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import app_config from '../../config';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 const CurePage = () => {
   const [cureData, setCureData] = useState(JSON.parse(sessionStorage.getItem('cureData')));
   const { apiUrl } = app_config;
 
   const [productData, setProductData] = useState(null);
+
+  const navigate = useNavigate();
 
   const fetchCureData = async () => {
     console.log(apiUrl + '/cure/getbyid/' + cureData.itemId);
@@ -18,6 +21,11 @@ const CurePage = () => {
     }
   };
 
+  const orderProduct = async () => {
+    sessionStorage.setItem('productData', JSON.stringify(productData));
+    navigate('/user/order');
+  }
+
   const displayProduct = () => {
     return (
       <div className="card">
@@ -28,6 +36,8 @@ const CurePage = () => {
           <div className="col-9">
             <div className="card-body">
               <h3>{productData.title}</h3>
+              <p className="card-text">{productData.description}</p>
+              <button className="btn btn-primary" onClick={orderProduct}>Buy Now</button>
             </div>
           </div>
         </div>
