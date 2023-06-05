@@ -106,9 +106,7 @@ const Navbar = () => {
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" onClick={logout} role='button'>
-                    Logout
-                  </a>
+                 
                 </li>
               </ul>
             </div>
