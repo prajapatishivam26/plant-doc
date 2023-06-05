@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import app_config from '../../config';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import Webcam from 'react-webcam';
 
 const Prediction = () => {
 
@@ -18,7 +19,13 @@ const Prediction = () => {
 
   const [result, setResult] = useState(null);
 
+  const [showWebcam, setShowWebcam] = useState(false);
+
   let webcam, labelContainer;
+
+  const webcamRef = useRef(null);
+  // const modelURL = '<MODEL_URL>'; // Replace with your model URL
+  // const    = useRef(null);
 
   const predictionResultExtractor = (prediction) => {
 
@@ -86,6 +93,32 @@ const Prediction = () => {
     //     labelContainer.appendChild(document.createElement("div"));
     // }
   }
+
+  const capture = async () => {
+    setShowWebcam(true);
+    if (webcamRef.current) {
+      const imageSrc = webcamRef.current.getScreenshot();
+      const img = document.createElement('img');
+      img.src = imageSrc;
+      console.log(img);
+      document.body.appendChild(img);
+
+      const prediction = await model.predict(img);
+      console.log(prediction);
+      const result = predictionResultExtractor(prediction);
+      console.log(result);
+      setResult(result);
+    }
+  };
+
+  // useEffect(() => {
+  //   async function loadModel() {
+  //     model.current = await tmImage.load(modelURL);
+  //     console.log('Model loaded successfully!');
+  //   }
+
+  //   loadModel();
+  // }, []);
 
   async function predict() {
     // predict can take in an image, video or canvas html element
@@ -166,7 +199,7 @@ const Prediction = () => {
   const findCure = () => {
     const cureData = app_config.cureData.find((cure) => cure.diseaseName === result.className);
     console.log(cureData);
-    if(cureData){
+    if (cureData) {
       sessionStorage.setItem('cureData', JSON.stringify(cureData));
       navigate('/user/cure');
     }
@@ -185,7 +218,21 @@ const Prediction = () => {
       <section>
         <div className="container">
           <div className="row">
-            <div className="col-md-10 mx-auto">
+            <div className='col-md-6'>
+              <div className='card'>
+                <div className='card-header'>
+                  <h4 className='text-center'>Use Camera</h4>
+                </div>
+                <div className='card-body'>
+                  {
+                    showWebcam &&
+                    <Webcam ref={webcamRef} />
+                  }
+                  <button onClick={capture}>Capture</button>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-6 mx-auto">
               <div className="card"
               //   style={{height: '70vh', backgroundSize: 'cover', backgroundImage: `url('https://images.unsplash.com/photo-1538438253612-287c9fc9217e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGxhbnQlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&w=1000&q=80')`}}
               >
