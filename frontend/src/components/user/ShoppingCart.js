@@ -7,7 +7,9 @@ import { MDBCard, MDBCardBody, MDBCardImage, MDBCol, MDBContainer, MDBRow } from
 import { Link } from 'react-router-dom';
 import app_config from '../../config';
 
-const stripePromise = loadStripe('pk_test_51NAWp1SCPacst9Jc5mNIG1n7wWazStI6fyZsE4vsLHFnMncWtmoIZHR9yjiwVwn25ARWEpbLhfPXFqooirlk50qC00HtMHHCle');
+const stripePromise = loadStripe(
+  "pk_test_51NAWp1SCPacst9Jc5mNIG1n7wWazStI6fyZsE4vsLHFnMncWtmoIZHR9yjiwVwn25ARWEpbLhfPXFqooirlk50qC00HtMHHCle"
+);
 
 const ShoppingCart = () => {
   const [clientSecret, setClientSecret] = useState('');
