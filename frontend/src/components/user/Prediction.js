@@ -11,65 +11,67 @@ const Prediction = () => {
   const [model, setModel] = useState(null);
   const [maxPredictions, setMaxPredictions] = useState(null);
 
-  const navigate = useNavigate();
+  const [selImg, setSelImg] = useState('');
 
   const [selImage, setSelImage] = useState('');
 
   const [predictionLoading, setPredictionLoading] = useState(false);
 
+  const [loadedImage, setLoadedImage] = useState(null);
+
   const [result, setResult] = useState(null);
 
-  const [showWebcam, setShowWebcam] = useState(false);
+  const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('user')));
 
   let webcam, labelContainer;
 
-  const webcamRef = useRef(null);
-  // const modelURL = '<MODEL_URL>'; // Replace with your model URL
-  // const    = useRef(null);
-
   const predictionResultExtractor = (prediction) => {
-
-    return prediction.find((pred) => pred.probability === Math.max(...prediction.map((pred) => pred.probability)));
+    let tempRes = prediction.find((pred) => pred.probability === Math.max(...prediction.map((pred) => pred.probability)));
+    if (tempRes.probability < 0.5) {
+      return { className: 'Sorry! Unknown Plant', probability: 0 }
+    }
+    return tempRes;
     let result = [];
     for (let i = 0; i < maxPredictions; i++) {
-      const classPrediction =
-        prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+      const classPrediction = prediction[i].className + ': ' + prediction[i].probability.toFixed(2);
       result.push(classPrediction);
     }
     return result;
-  }
+  };
 
-  const saveImage = async (file) => {
+  const uploadFile = (file) => {
     const fd = new FormData();
     fd.append('myfile', file);
-    const res = await fetch(apiUrl + '/util/uploadfile', {
+    fetch(apiUrl + '/util/uploadfile', {
       method: 'POST',
       body: fd
+    }).then((res) => {
+      if (res.status === 200) {
+        console.log('file uploaded');
+      }
     });
-    if (res.status === 200) {
-      console.log('file uploaded');
+  };
 
-      const res = await fetch(apiUrl + '/image/add', {
-        method: 'POST',
-        body: JSON.stringify({
-          file: file.name,
-          user: JSON.parse(sessionStorage.getItem('user'))._id
-        }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-
-      console.log(res.status);
-
-
-      // return file.name;
-    }
-  }
+  const saveHistory = async (res) => {
+    const response = await fetch(`${apiUrl}/prediction/add`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        image: selImg,
+        user: currentUser._id,
+        result: res,
+        createdAt: new Date()
+      })
+    });
+    const data = await response.json();
+    console.log(data);
+  };
 
   async function init() {
-    const modelURL = modelPath + "/model.json";
-    const metadataURL = modelPath + "/metadata.json";
+    const modelURL = modelPath + '/model.json';
+    const metadataURL = modelPath + '/metadata.json';
 
     // load the model and metadata
     // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
@@ -78,96 +80,20 @@ const Prediction = () => {
     let modelT = await window.tmImage.load(modelURL, metadataURL);
     setMaxPredictions(modelT.getTotalClasses());
     setModel(modelT);
-
-    // Convenience function to setup a webcam
-    // const flip = true; // whether to flip the webcam
-    // webcam = new window.tmImage.Webcam(200, 200, flip); // width, height, flip
-    // await webcam.setup(); // request access to the webcam
-    // await webcam.play();
-    // window.requestAnimationFrame(loop);
-
-    // append elements to the DOM
-    // document.getElementById("webcam-container").appendChild(webcam.canvas);
-    // labelContainer = document.getElementById("label-container");
-    // for (let i = 0; i < maxPredictions; i++) { // and class labels
-    //     labelContainer.appendChild(document.createElement("div"));
-    // }
   }
 
-  const capture = async () => {
-    setShowWebcam(true);
-    if (webcamRef.current) {
-      const imageSrc = webcamRef.current.getScreenshot();
-      const img = document.createElement('img');
-      img.src = imageSrc;
-      console.log(img);
-      document.body.appendChild(img);
-
-      const prediction = await model.predict(img);
-      console.log(prediction);
-      const result = predictionResultExtractor(prediction);
-      console.log(result);
-      setResult(result);
-    }
-  };
-
-  // useEffect(() => {
-  //   async function loadModel() {
-  //     model.current = await tmImage.load(modelURL);
-  //     console.log('Model loaded successfully!');
-  //   }
-
-  //   loadModel();
-  // }, []);
-
-  async function predict() {
-    // predict can take in an image, video or canvas html element
-    let img = new Image();
-    img.src = 'leaf2.jpg';
-    console.log(img);
-    // console.log(webcam.canvas);
-    // console.log(webcam.canvas.value);
-    // const prediction = await model.predict(webcam.canvas);
-    const prediction = await model.predict(img);
-    for (let i = 0; i < maxPredictions; i++) {
-      const classPrediction =
-        prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-      labelContainer.childNodes[i].innerHTML = classPrediction;
-    }
-  }
-
-  const predictFromImage = async (img) => {
-    // predict can take in an image, video or canvas html element
-    // let img = new Image();
-    // img.src = '/leaf2.jpg';
-    // console.log(img);
-    // console.log(webcam.canvas);
-    // console.log(webcam.canvas.value);
-    // const prediction = await model.predict(webcam.canvas);
-    // console.log(model);
-    const prediction = await model.predict(img);
+  const predictFromImage = async () => {
+    const prediction = await model.predict(loadedImage);
     console.log(prediction);
-    const result = predictionResultExtractor(prediction);
-    console.log(result);
-    setResult(result);
+    console.log(predictionResultExtractor(prediction));
+    setResult(predictionResultExtractor(prediction));
+    saveHistory(predictionResultExtractor(prediction));
     Swal.fire({
       title: 'Success',
       icon: 'success',
       text: 'Prediction Completed'
-    })
-    // for (let i = 0; i < maxPredictions; i++) {
-    //     const classPrediction =
-    //         prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-    //         // labelContainer.childNodes[i].innerHTML = classPrediction;
-    //         console.log(classPrediction);
-    //     }
-  }
-
-  async function loop() {
-    webcam.update(); // update the webcam frame
-    await predict();
-    window.requestAnimationFrame(loop);
-  }
+    });
+  };
 
   useEffect(() => {
     init();
@@ -175,35 +101,28 @@ const Prediction = () => {
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
+    setSelImg(file.name);
+    uploadFile(file);
     const img = new Image();
 
     // Validate if a file is selected
     if (file) {
       // Create a FileReader to read the file
       const reader = new FileReader();
-
+      console.log();
       // Set up the FileReader onload event
       reader.onload = function (loadedEvent) {
         // Set the image source to the uploaded image data
+        console.log('loaded');
         img.src = loadedEvent.target.result;
         setSelImage(loadedEvent.target.result);
-        predictFromImage(img);
-        saveImage(file);
+        setLoadedImage(img);
       };
 
       // Read the file as a data URL
       reader.readAsDataURL(file);
     }
-  }
-
-  const findCure = () => {
-    const cureData = app_config.cureData.find((cure) => cure.diseaseName === result.className);
-    console.log(cureData);
-    if (cureData) {
-      sessionStorage.setItem('cureData', JSON.stringify(cureData));
-      navigate('/user/cure');
-    }
-  }
+  };
 
   return (
     <div style={{ minHeight: '100vh', backgroundImage: "url('https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v986-bg-02-kqhe3wit.jpg?w=1200&h=1200&dpr=1&fit=clip&crop=default&fm=jpg&q=75&vib=3&con=3&usm=15&cs=srgb&bg=F4F4F3&ixlib=js-2.2.1&s=a18675d7f6be224df8ff585d65d5d8dc')" }}>
@@ -224,11 +143,7 @@ const Prediction = () => {
                   <h4 className='text-center'>Use Camera</h4>
                 </div>
                 <div className='card-body'>
-                  {
-                    showWebcam &&
-                    <Webcam ref={webcamRef} />
-                  }
-                  <button onClick={capture}>Capture</button>
+                  
                 </div>
               </div>
             </div>
@@ -248,6 +163,12 @@ const Prediction = () => {
                     selImage ? <img style={{ height: '400px' }} className='d-block m-auto mt-4' src={selImage} alt="" /> : <p className='text-center h1 mt-5 bg-white py-4'>Select a leaf image to predict disease</p>
                   }
 
+{loadedImage && (
+                      <button className="btn btn-primary mt-5" onClick={predictFromImage}>
+                        Predict Disease
+                      </button>
+                    )}
+
                   {
                     result && (
                       result.className.endsWith('healthy') ?
@@ -255,7 +176,7 @@ const Prediction = () => {
                         (
                           <>
                             <p className='h1 fw-bold text-danger text-center'>OOps!! Your plant has been detected with disease : {result.className}</p>
-                            <button className='btn btn-success mt-3 w-100' onClick={findCure}> Find Cure for Your Disease <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                            {/* <button className='btn btn-success mt-3 w-100' onClick={findCure}> Find Cure for Your Disease <i class="fa fa-arrow-right" aria-hidden="true"></i></button> */}
                           </>
                         )
                     )
