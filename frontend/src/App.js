@@ -48,7 +48,7 @@ function App() {
               <Route path="predict" element={<Prediction />} />
               <Route path="cure" element={<CurePage />} />
               <Route path="order" element={<OrderProduct />} />
-              <Route path="profile" element={<UserProfile />} />
+              <Route path="userprofile" element={<UserProfile />} />
             </Route>
             <Route
               path="admin"
