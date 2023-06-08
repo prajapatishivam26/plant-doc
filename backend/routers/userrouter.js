@@ -43,5 +43,20 @@ router.post('/authenticate', (req, res) => {
     });
 })
 
+router.put('/update/:id', (req, res) => {
+    Model.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    .then((result) => {
+        if(result) res.json({result, message: 'User Updated Successfully'});
+        else res.status(401).json({ message: 'Invalid Credentials'});
+
+    })
+    .catch((err) => {
+        console.error(err);
+        res.status(500).json(err);
+        
+
+    });
+})
+
 
 module.exports = router;

@@ -25,6 +25,7 @@ import Managecure from './components/admin/Managecure';
 import AdminAuth from './auth/AdminAuth';
 import OrderProduct from './components/user/OrderProduct';
 import PredictionHistory from './components/user/PredictionHistory';
+import UserAuth from './auth/UserAuth';
 
 function App() {
   return (
@@ -44,7 +45,7 @@ function App() {
               <Route path="forgetpassword" element={<Forgetpassword />} />
               <Route path="termscondition" element={<TermsCondition />} />
             </Route>
-            <Route path="user" element={<User />}>
+            <Route path="user" element={ <UserAuth> <User /> </UserAuth> }>
               {/* <Route path="predict1" element={<PredictPlantDisease />} /> */}
               <Route path="predict" element={<Prediction />} />
               <Route path="cure" element={<CurePage />} />
