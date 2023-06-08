@@ -191,4 +191,4 @@ const Prediction = () => {
   )
 }
 
-export default Prediction
+export default Prediction;
