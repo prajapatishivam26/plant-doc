@@ -3,7 +3,7 @@ import app_config from '../../config';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 const CurePage = () => {
-  const [cureData, setCureData] = useState(JSON.parse(sessionStorage.getItem('cureData')));
+  const [cureData, setCureData] = useState(JSON.parse(sessionStorage.getItem('diseaseData')));
   const { apiUrl } = app_config;
 
   const [productData, setProductData] = useState(null);
@@ -38,7 +38,7 @@ const CurePage = () => {
               <h3>{productData.title}</h3>
               <p className="card-text">{productData.description}</p>
               <button className="btn btn-primary" onClick={orderProduct}>Buy Now</button>
-            </div>
+            </div>  
           </div>
         </div>
       </div>

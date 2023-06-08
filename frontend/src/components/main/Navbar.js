@@ -1,7 +1,13 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { useUserContext } from '../../context/UserProvider'
 
 const Navbar = () => {
+
+  const {loggedIn, logout} = useUserContext();
+
+  
+
   return (
     <div><>
     {/* Navbar */}
@@ -66,47 +72,8 @@ const Navbar = () => {
         {/* Collapsible wrapper */}
         {/* Right elements */}
         <div className="d-flex align-items-center">
-          {/* Icon */}
-          <a className="text-reset me-3" href="#">
-            <i className="fas fa-shopping-cart" />
-          </a>
-          {/* Notifications */}
-          <div className="dropdown">
-            <a
-              className="text-reset me-3 dropdown-toggle hidden-arrow"
-              href="#"
-              id="navbarDropdownMenuLink"
-              role="button"
-              data-mdb-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <i className="fas fa-bell" />
-              <span className="badge rounded-pill badge-notification bg-danger">
-                1
-              </span>
-            </a>
-            <ul
-              className="dropdown-menu dropdown-menu-end"
-              aria-labelledby="navbarDropdownMenuLink"
-            >
-              <li>
-                <a className="dropdown-item" href="#">
-                  Some news
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Another news
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Something else here
-                </a>
-              </li>
-            </ul>
-          </div>
-          {/* Avatar */}
+          {
+            loggedIn && (
           <div className="dropdown">
             <a
               className="dropdown-toggle d-flex align-items-center hidden-arrow"
@@ -129,20 +96,24 @@ const Navbar = () => {
               aria-labelledby="navbarDropdownMenuAvatar"
             >
               <li>
-                <a className="dropdown-item" href="/user/UserProfile">
+                <NavLink className="dropdown-item" to="/user/UserProfile">
                   My profile
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
-                  Settings
-                </a>
+                <NavLink className="dropdown-item" to="/user/history">
+                  My Predictions
+                </NavLink>
               </li>
               <li>
-                
+              <a role='button' className="dropdown-item" href="#" onClick={logout}>
+                  Logout
+                </a>
               </li>
             </ul>
           </div>
+            )
+          }
         </div>
         {/* Right elements */}
       </div>

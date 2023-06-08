@@ -21,3 +21,32 @@
   background-size: cover;
   background-position: center;
 }
+
+.cam-container{
+  height: 30rem;
+  /* display: inline-block; */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.cam-container:hover .overlay {
+  display: block;
+  opacity: 1;
+}
+
+.overlay p {
+  text-align: center;
+  margin-top: 50%;
+  transform: translateY(-50%);
+}
