@@ -65,6 +65,11 @@ const Navbar = () => {
                   Predict Disease
                 </NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/user/history">
+                  Prediction History
+                </NavLink>
+              </li>
 
             </ul>
             {/* Left links */}
@@ -96,9 +101,9 @@ const Navbar = () => {
                 aria-labelledby="navbarDropdownMenuAvatar"
               >
                 <li>
-                  <a className="dropdown-item" href="/user/profile">
+                  <NavLink className="dropdown-item" to="/user/userprofile">
                     My profile
-                  </a>
+                  </NavLink>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">

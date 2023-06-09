@@ -5,10 +5,13 @@ import Swal from "sweetalert2";
 import { MDBInput } from 'mdb-react-ui-kit';
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../../context/UserProvider";
 
 const Login = () => {
 
   const navigate  = useNavigate();
+
+  const { setLoggedIn } = useUserContext();
 
   const loginSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Required"),
@@ -41,6 +44,7 @@ const Login = () => {
 
         const data = await res.json();
         console.log(data);
+        setLoggedIn(true);
         if(data.role === 'admin'){
           sessionStorage.setItem('admin', JSON.stringify(data));
           navigate('/admin/managecure');
