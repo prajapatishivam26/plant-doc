@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import Webcam from 'react-webcam';
 
+
 const Prediction = () => {
 
   const { apiUrl, modelPath } = app_config;
@@ -175,9 +176,9 @@ const Prediction = () => {
                         <p className='display-4 fw-bold text-success text-center'>Congratulations!! Your plant is Healthy</p> :
                         (
                           <>
-                            <p className='h1 fw-bold text-danger text-center'>OOps!! Your plant has been detected with disease : {result.className}</p>
-                            {/* <button className='btn btn-success mt-3 w-100' onClick={findCure}> Find Cure for Your Disease <i class="fa fa-arrow-right" aria-hidden="true"></i></button> */}
-                          </>
+                          <p className='h1 fw-bold text-danger text-center'>OOps!! Your plant has been detected with disease : {result.className}</p>
+                          {/* {  <button className='btn btn-success mt-3 w-100' onClick={findCure}> Find Cure for Your Disease <i class="fa fa-arrow-right" aria-hidden="true"></i></button> } */}
+                        </>
                         )
                     )
                   }
