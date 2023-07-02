@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import app_config from '../../config';
 import Swal from 'sweetalert2';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Webcam from 'react-webcam';
-
 
 const Prediction = () => {
   const { apiUrl, modelPath, cureData } = app_config;
@@ -28,6 +27,20 @@ const Prediction = () => {
   const [camOpen, setCamOpen] = useState(false);
 
   const navigate = useNavigate();
+
+  const webcamRef = useRef(null);
+
+  const captureImage = useCallback(() => {
+    const imageSrc = webcamRef.current.getScreenshot();
+    // Do something with the captured image (e.g., send it to a server)
+    // console.log(imageSrc);
+    const img = new Image();
+    img.src = imageSrc;
+    setSelImage(imageSrc);
+    setLoadedImage(img);
+    setCamOpen(false);
+
+  }, []);
 
   const predictionResultExtractor = (prediction) => {
     let tempRes = prediction.find((pred) => pred.probability === Math.max(...prediction.map((pred) => pred.probability)));
@@ -174,8 +187,8 @@ const Prediction = () => {
                 <div className="">
                   {camOpen ? (
                     <>
-                      <Webcam style={{ width: '100%', height: '100%' }} />
-                      <button style={{ position: 'absolute', top: 15, left: 15 }} className="btn btn-primary" onClick={(e) => setCamOpen(false)}>
+                      <Webcam ref={webcamRef} style={{ width: '100%', height: '100%' }} screenshotFormat="image/jpeg" />
+                      <button style={{ position: 'absolute', top: 15, left: 15 }} className="btn btn-primary" onClick={captureImage}>
                         <i class="fa fa-camera" aria-hidden="true"></i> Capture Image
                       </button>
                     </>
@@ -212,20 +225,17 @@ const Prediction = () => {
                   ) : (
                     <p className="text-center h1 mt-5 bg-white py-4">Select a leaf image to predict disease</p>
                   )}
-
-                  {result && getPlantStatus()}
-
-                  {loadedImage && (
-                    <button className="btn btn-primary mt-5" onClick={predictFromImage}>
-                      Predict Disease
-                    </button>
-                  )}
-
-                  
                 </div>
               </div>
             </div>
           </div>
+          {result && getPlantStatus()}
+
+          {loadedImage && (
+            <button className="btn btn-primary mt-5" onClick={predictFromImage}>
+              Predict Disease
+            </button>
+          )}
         </div>
       </section>
     </div>
